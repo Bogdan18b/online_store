@@ -10,8 +10,8 @@ const Table = styled.table`
   td,
   th {
     border-bottom: 1px solid ${props => props.theme.offWhite};
+    padding: 5px;
     border-right: 1px solid ${props => props.theme.offWhite};
-    padding: 10px 5px;
     position: relative;
     &:last-child {
       border-right: none;
@@ -19,6 +19,10 @@ const Table = styled.table`
       button {
         width: 100%;
       }
+    }
+    label {
+      display: block;
+      padding: 10px 5px;
     }
   }
   tr {
