@@ -7,6 +7,7 @@ import User from './User';
 import CloseButton from './styles/CloseButton';
 import SickButton from './styles/SickButton';
 import CartItem from './CartItem';
+import Checkout from './Checkout';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
 
@@ -48,7 +49,11 @@ const Cart = () => {
             </ul>
             <footer>
               <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-              <SickButton>Checkout</SickButton>
+              {me.cart.length && (
+                <Checkout>
+                  <SickButton>Checkout</SickButton>
+                </Checkout>
+            )}
             </footer>
           </CartStyles>
         );

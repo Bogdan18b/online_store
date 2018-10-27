@@ -11,40 +11,43 @@ type Mutation {
     price: Int,
     image: String,
     largeImage: String
-    ): Item!
+  ): Item!
   updateItem(
     id: ID!
     title: String,
     description: String,
     price: Int
-    ): Item!
+  ): Item!
   deleteItem(id: ID!): Item
   signup(
     email: String!,
     password: String!,
     name: String!
-    ): User!
+  ): User!
   signin(
     email: String!,
     password: String!
-    ): User!
+  ): User!
   signout: SuccessMessage
   requestReset(email: String!): SuccessMessage
   resetPassword(
     resetToken: String!,
     password: String!,
     confirmPassword: String!
-    ): User!
+  ): User!
   updatePermissions(
     permissions: [Permission],
     userId: ID!
-    ): User!
+  ): User!
   addToCart(
     id: ID!
-    ): CartItem
-    removeFromCart(
-      id: ID!
-      ): CartItem
+  ): CartItem
+  removeFromCart(
+    id: ID!
+  ): CartItem
+  createOrder(
+    token: String!
+  ): Order!
 }
 
 type Query {
@@ -53,6 +56,9 @@ type Query {
   itemsConnection(where: ItemWhereInput): ItemConnection!
   me: User
   users: [User]!
+  order(
+    id: ID!
+  ): Order
 }
 
 type User {
