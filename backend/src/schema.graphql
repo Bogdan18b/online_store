@@ -70,4 +70,5 @@ type User {
   email: String!
   permissions: [Permission!]!
   cart: [CartItem!]!
+  rders: [OrderItem]
 }
