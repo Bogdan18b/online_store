@@ -59,6 +59,9 @@ type Query {
   order(
     id: ID!
   ): Order
+  orders(
+    orderBy: OrderOrderByInput
+  ): [Order!]!
 }
 
 type User {
