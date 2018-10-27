@@ -27,13 +27,14 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
-server.start({
-//   cors: {
-//     credentials: true,
-//     origin: process.env.FRONTEND_URL,
-//     mode: "no-cors"
-//   }
-// },
-deets => {
-  console.log(`server is now running on port http://localhost:${deets.port}`);
-});
+server.start(
+  {
+    cors: {
+      credentials: true,
+      origin: process.env.FRONTEND_URL
+    }
+  },
+  deets => {
+    console.log(`server is now running on port http://localhost:${deets.port}`);
+  }
+);
