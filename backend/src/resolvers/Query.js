@@ -32,8 +32,6 @@ const Query = {
     }, info);
     const ownsOrder = order.user.id === ctx.request.userId;
     const hasPermissionToSeeOrder = ctx.request.user.permissions.includes('ADMIN');
-    console.log(`ownsOrder ${ownsOrder}`);
-    console.log(`hasPermissionToSeeOrder ${hasPermissionToSeeOrder}`);
     if(!ownsOrder && !hasPermissionToSeeOrder) {
       throw new Error("You can't see this!")
     };

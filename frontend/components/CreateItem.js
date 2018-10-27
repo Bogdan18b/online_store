@@ -49,8 +49,6 @@ class CreateItem extends Component {
       body: data
     });
     const file = await res.json();
-    console.log(data);
-    console.log(file);
     this.setState({
       image: file.secure_url,
       largeImage: file.eager[0].secure_url
@@ -86,7 +84,7 @@ class CreateItem extends Component {
                   required
                   onChange={this.uploadFile}
                 />
-                {this.state.image && <img width="200px" 
+                {this.state.image && <img width="200px"
                   src={this.state.image} alt="preview"/>}
               </label>
 
