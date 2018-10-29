@@ -17,12 +17,6 @@ server.express.use((req, res, next) => {
   next();
 });
 
-server.express.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 server.express.use(async (req, res, next) => {
   if (!req.userId) return next();
   const user = await db.query.user(
