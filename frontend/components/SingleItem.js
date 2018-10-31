@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import Error from './ErrorMessage';
 import styled from 'styled-components';
 import Head from 'next/head';
+import formatMoney from '../lib/formatMoney';
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
@@ -19,8 +20,11 @@ const SingleItemStyles = styled.div`
     object-fit: contain;
   }
   .details {
-    margin: 3rem;
+    text-align: center;
     font-size: 2rem;
+    h2 {
+      color: ${props => props.theme.red};
+    }
   }
 `;
 
@@ -31,6 +35,10 @@ const SINGLE_ITEM_QUERY = gql`
       title
       description
       largeImage
+      price
+      user {
+        name
+      }
     }
   }
 `;
@@ -53,8 +61,10 @@ class SingleItem extends Component {
               <Head>La Piata | {item.title}</Head>
               <img src={item.largeImage} alt={item.title}/>
               <div className="details">
-                <h2>Viewing {item.title}</h2>
-                <p>{item.description}</p>
+                <h2>{item.title.toUpperCase()}</h2>
+                <p>Price: {formatMoney(item.price)}</p>
+                <p>Sold By: {item.user.name}</p>
+                <p>Description: {item.description}</p>
               </div>
             </SingleItemStyles>
           );

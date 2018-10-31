@@ -27,7 +27,6 @@ const Composed = adopt({
   user: ({ render }) => <User>{render}</User>,
   toggleCart: ({ render }) => <Mutation mutation={TOGGLE_CART_MUTATION}>{render}</Mutation>,
   localState: ({ render }) => <Query query={LOCAL_STATE_QUERY} >{render}</Query>
-
 });
 
 const Cart = () => {

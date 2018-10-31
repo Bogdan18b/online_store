@@ -40,9 +40,11 @@ const Mutations = {
   },
 
   async deleteItem(parent, args, ctx, info) {
+    if (!ctx.request.userId) {
+      throw new Error('You must be logged in!');
+    }
     const where = { id: args.id };
     const item = await ctx.db.query.item({ where }, `{ id title user { id }}`);
-
     const ownsItem = item.user.id === ctx.request.userId;
     const hasPermissions = ctx.request.user.permissions.some(permission => ['ADMIN', 'ITEMDELETE'].includes(permission));
     if (!ownsItem && !hasPermissions) {
@@ -180,6 +182,14 @@ const Mutations = {
     const { userId } = ctx.request;
     if (!userId) {
       throw new Error('You must be signed in!');
+    };
+    const item = await ctx.db.query.item({
+      where: {
+        id: args.id,
+      }
+    }, `{ id, user { id }}`);
+    if (item.user.id === userId) {
+      throw new Error('You can\'t add your own items to cart!');
     };
     const [existingCartItem] = await ctx.db.query.cartItems({
       where: {
