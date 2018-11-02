@@ -15,6 +15,9 @@ const SickButton = styled.button`
   &[disabled] {
     opacity: 0.5;
   }
+  a {
+    color: white;
+  }
 `;
 
 export default SickButton;

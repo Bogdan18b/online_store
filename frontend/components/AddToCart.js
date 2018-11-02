@@ -1,6 +1,7 @@
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CURRENT_USER_QUERY } from './User';
+import SickButton from './styles/SickButton';
 
 const ADD_TO_CART_MUTATION = gql`
   mutation addToCart($id: ID!) {
@@ -22,12 +23,12 @@ class AddToCart extends React.Component {
       >
         {(addToCart, { loading, error }) => (
           <React.Fragment>
-            <button
+            <SickButton
               onClick={() => addToCart().catch(err => alert(err.message.slice(15)))}
               disabled={loading}
             >Add{loading && 'ing'} To Cart
 
-            </button>
+            </SickButton>
           </React.Fragment>
         )}
       </Mutation>

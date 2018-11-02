@@ -17,7 +17,12 @@ class Item extends Component {
     const { item } = this.props;
     return (
       <ItemStyles>
-        {item.image && <img src={item.image} alt={item.title}/>}
+        {item.image && <Link href={{
+            pathname: '/item',
+            query: { id: item.id}
+          }}>
+          <a><img src={item.image} alt={item.title}/></a>
+        </Link>}
         <Title>
           <Link href={{
               pathname: '/item',
@@ -28,16 +33,6 @@ class Item extends Component {
         </Title>
         <PriceTag>{formatMoney(item.price)}</PriceTag>
         <p>{item.description}</p>
-        <div className="buttonList">
-          <Link href={{
-              pathname: 'update',
-              query: {id: item.id}
-            }}>
-            <a>Edit</a>
-          </Link>
-          <AddToCart id={item.id}/>
-          <DeleteItem id={item.id}/>
-        </div>
       </ItemStyles>
     );
   }

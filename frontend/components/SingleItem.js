@@ -5,6 +5,10 @@ import Error from './ErrorMessage';
 import styled from 'styled-components';
 import Head from 'next/head';
 import formatMoney from '../lib/formatMoney';
+import DeleteItem from './DeleteItem';
+import AddToCart from './AddToCart';
+import Link from 'next/link';
+import SickButton from './styles/SickButton';
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
@@ -38,7 +42,11 @@ const SINGLE_ITEM_QUERY = gql`
       price
       user {
         name
+        id
       }
+    }
+    me {
+      id
     }
   }
 `;
@@ -65,6 +73,19 @@ class SingleItem extends Component {
                 <p>Price: {formatMoney(item.price)}</p>
                 <p>Sold By: {item.user.name}</p>
                 <p>Description: {item.description}</p>
+                {data.me && data.me.id === item.user.id && <SickButton><Link href={{
+                    pathname: 'update',
+                    query: {id: item.id}
+                  }}>
+                  <a>Update</a>
+                </Link></SickButton>}
+                {data.me && data.me.id !== item.user.id && <AddToCart id={item.id}/>}
+                {data.me && data.me.id === item.user.id && <DeleteItem id={item.id}/>}
+                {!data.me && <SickButton><Link href={{
+                    pathname: 'signup',
+                  }}>
+                  <a>Sign in to buy the item</a>
+                </Link></SickButton>}
               </div>
             </SingleItemStyles>
           );
