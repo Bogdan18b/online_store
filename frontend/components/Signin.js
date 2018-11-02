@@ -25,6 +25,10 @@ class Signin extends Component {
   saveToState = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
+  guestLogin = () => this.setState({
+    email: "john@wayne.com",
+    password: "cowboy"
+  });
   render() {
     return (
       <Mutation
@@ -38,7 +42,6 @@ class Signin extends Component {
             <Form method="post" onSubmit={async e => {
               e.preventDefault();
               await signin();
-              this.setState({ name: "", email: "", password: ""});
               Router.push({
                 pathname: '/',
               });
@@ -65,6 +68,9 @@ class Signin extends Component {
                   />
                 </label>
                 <button>Sign In</button>
+                <br/>
+                <br/>
+                <button onClick={this.guestLogin}>Demo Login</button>
               </fieldset>
             </Form>
           )
@@ -75,3 +81,4 @@ class Signin extends Component {
 }
 
 export default Signin;
+export { SIGNIN_MUTATION };
