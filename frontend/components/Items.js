@@ -42,7 +42,7 @@ class Items extends Component {
           }}
         >
           {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
+            if (loading) return <p>loading...</p>;
             if (error) return <p>Error: {error.message}</p>;
             return (
               <ItemsList>
