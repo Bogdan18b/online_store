@@ -2,6 +2,7 @@ import formatMoney from '../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 const CartItemStyles = styled.li`
   padding: 1rem 0;
@@ -12,7 +13,7 @@ const CartItemStyles = styled.li`
   img {
     margin-right: 10px;
   }
-  h3, p {
+  a, p {
     margin: 0;
   }
 `;
@@ -26,9 +27,19 @@ const CartItem = ({ cartItem }) => {
   );
   return (
     <CartItemStyles>
-      <img width="100" src={cartItem.item.image} alt={cartItem.item.title} />
+      <Link href={{
+          pathname: '/item',
+          query: { id: cartItem.item.id}
+        }}>
+        <a><img width="100" src={cartItem.item.image} alt={cartItem.item.title} /></a>
+      </Link>
       <div className="cart-item-details">
-        <h3>{cartItem.item.title}</h3>
+        <Link href={{
+            pathname: '/item',
+            query: { id: cartItem.item.id}
+          }}>
+          <a>{cartItem.item.title}</a>
+        </Link>
         <p>
           {formatMoney(cartItem.item.price * cartItem.quantity)}
           {" - "}
