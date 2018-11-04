@@ -3,7 +3,6 @@ require('dotenv').config({ path: 'variables.env'});
 const createServer = require('./createServer');
 const db = require('./db');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
 
 const server = createServer();
 
@@ -28,9 +27,13 @@ server.express.use(async (req, res, next) => {
   next();
 });
 
-server.express.use(cors());
-
-server.start (
+server.start(
+  {
+    cors: {
+      credentials: true,
+      origin: process.env.FRONTEND_URL
+    }
+  },
   deets => {
     console.log(`server is now running on port http://localhost:${deets.port}`);
   }
