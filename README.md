@@ -1,7 +1,8 @@
 ![logo](https://github.com/Bogdan18b/online_store/blob/master/logo.png)
+
  La Piata is a full-stack single page web application online store. You have a live demo [here](https://la-piata-frontend-ebhmpztoni.now.sh). You can login as a guest and add a new item to sell or order a few items.
 
-![demo](https://github.com/Bogdan18b/online_store/blob/master/demo.png
+![demo](https://github.com/Bogdan18b/online_store/blob/master/demo.png)
 
 ## Table of Contents
 
