@@ -11,6 +11,11 @@ const Item = styled.div`
     width: 100%;
     height: 400px;
     object-fit: cover;
+    @media (max-width: 800px) {
+      width: 70%;
+      height: 330px;
+      object-fit: contain;
+    }
   }
   p {
     font-size: 12px;
