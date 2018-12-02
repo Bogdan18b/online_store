@@ -27,7 +27,7 @@ class Signin extends Component {
   }
   guestLogin = () => this.setState({
     email: "john@wayne.com",
-    password: "cowboy"
+    password: "123456"
   });
   render() {
     return (
