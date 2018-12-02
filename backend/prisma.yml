@@ -1,5 +1,6 @@
 #endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://la-piata-production.herokuapp.com/la-piata-prod/prod
+#endpoint: https://la-piata-production.herokuapp.com/la-piata-prod/prod
+endpoint: https://la-piata-prod-db-799437b69a.herokuapp.com/la-piata-prod/prod
 datamodel: datamodel.graphql
 secret: ${env:PRISMA_SECRET}
 hooks:
