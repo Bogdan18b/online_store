@@ -80,7 +80,6 @@ class CreateItem extends Component {
                   type="file"
                   id="file"
                   name="file"
-                  placeholder="Upload an image"
                   required
                   onChange={this.uploadFile}
                 />
@@ -94,7 +93,6 @@ class CreateItem extends Component {
                   type="text"
                   id="title"
                   name="title"
-                  placeholder="Title"
                   required
                   value={this.state.title}
                   onChange={this.handleChange}
@@ -107,7 +105,6 @@ class CreateItem extends Component {
                   type="number"
                   id="price"
                   name="price"
-                  placeholder="Price"
                   required
                   value={this.state.price}
                   onChange={this.handleChange}
@@ -119,7 +116,6 @@ class CreateItem extends Component {
                 <textarea
                   id="description"
                   name="description"
-                  placeholder="Description"
                   required
                   value={this.state.description}
                   onChange={this.handleChange}
