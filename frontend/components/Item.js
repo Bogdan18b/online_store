@@ -33,6 +33,7 @@ class Item extends Component {
         </Title>
         <PriceTag>{formatMoney(item.price)}</PriceTag>
         <p>{item.description}</p>
+        <AddToCart id={item.id}/>
       </ItemStyles>
     );
   }
