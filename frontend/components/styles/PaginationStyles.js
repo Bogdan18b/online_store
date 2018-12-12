@@ -4,7 +4,7 @@ const PaginationStyles = styled.div`
   text-align: center;
   display: inline-grid;
   grid-template-columns: repeat(4, auto);
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
   align-content: center;
   margin: 2rem 0;
@@ -12,7 +12,7 @@ const PaginationStyles = styled.div`
   border-radius: 10px;
   & > * {
     margin: 0;
-    padding: 15px 30px;
+    padding: 10px 20px;
     border-right: 1px solid ${props => props.theme.lightgrey};
     &:last-child {
       border-right: 0;
@@ -21,6 +21,10 @@ const PaginationStyles = styled.div`
   a[aria-disabled='true'] {
     color: grey;
     pointer-events: none;
+  }
+  .prev {
+    font-weight: bold;
+    font-size: 2rem;
   }
 `;
 
