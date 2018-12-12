@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
 import OrderItemStyles from './styles/OrderItemStyles';
+import Spinner from './styles/Spinner';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY {
@@ -37,7 +38,7 @@ class OrderList extends React.Component {
       <Query query={USER_ORDERS_QUERY}>
         {({data: { orders }, loading, error }) => {
           if (error) return <Error error={error}/>
-          if (loading) return <p>loading...</p>
+          if (loading) return <Spinner />
           return (
             <div>
               <h2>You have {orders.length} orders</h2>

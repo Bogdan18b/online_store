@@ -9,6 +9,7 @@ import DeleteItem from './DeleteItem';
 import AddToCart from './AddToCart';
 import Link from 'next/link';
 import SickButton from './styles/SickButton';
+import Spinner from './styles/Spinner';
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;
@@ -61,7 +62,7 @@ class SingleItem extends Component {
       >
         {({ error, loading, data }) => {
           if (error) return <Error error={error}/>
-          if (loading) return <p>Loading...</p>
+          if (loading) return <Spinner />
           if (!data.item) return <p>No item found for ID {this.props.id}</p>
           const { item } = data;
           return (

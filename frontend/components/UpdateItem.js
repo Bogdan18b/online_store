@@ -5,6 +5,7 @@ import Router from 'next/router';
 import Form from './styles/Form';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
+import Spinner from './styles/Spinner';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
@@ -62,7 +63,7 @@ updateItem = async (e, updateItemMutation) => {
         variables={{id: this.props.id
       }}>
         {({ data, loading }) => {
-          if (loading) return <p>loading...</p>
+          if (loading) return <Spinner />
           if (!data.item) return <p>No item found for ID {this.props.id}</p>
           return (
             <Mutation
