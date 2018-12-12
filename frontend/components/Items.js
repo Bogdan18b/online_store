@@ -5,6 +5,7 @@ import Pagination from './Pagination';
 import { perPage } from '../config';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
+import Spinner from './styles/Spinner';
 
 const ALL_ITEMS_QUERY = gql`
   query ALL_ITEMS_QUERY($skip: Int = 0, $first: Int = ${perPage}) {
@@ -45,7 +46,7 @@ class Items extends Component {
           }}
         >
           {({ data, error, loading }) => {
-            if (loading) return <p>loaffffding...</p>;
+            if (loading) return <Spinner />;
             if (error) return <p>Error: {error.message}</p>;
             return (
               <ItemsList>
